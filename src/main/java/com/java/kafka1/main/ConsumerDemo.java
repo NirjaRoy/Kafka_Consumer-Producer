@@ -24,11 +24,8 @@ public class ConsumerDemo {
 	}
 	public void run(){
 	String topic = "Topic2";
-	
-	//logger.info("Creating consumer thread");
-	//Runnable myConsumerThread= 
-	Runnable myConsumerThread=	new ConsumerThread (topic);
-		};
+	Runnable myConsumerThread=new ConsumerThread (topic);
+	};
 	
 public class ConsumerThread implements Runnable{
 		private CountDownLatch latch = new CountDownLatch(1);
@@ -40,7 +37,7 @@ public class ConsumerThread implements Runnable{
 			String val ="127.0.0.1:9092";
 				//Create consumer config/properties
 			Properties properties = new Properties();		
-				//Site -from https://kafka.ap’ache.org/documentation/#consumerconfigs
+				//Site -from https://kafka.apâ€™ache.org/documentation/#consumerconfigs
 				//BOOTSTRAP_SERVERS_CONFIG : A list of host/port pairs to use for establishing the initial connection to the Kafka cluster.FORMAT -host1:port1,host2:port2
 			properties.setProperty(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG,val);
 			     //key & value deserializer : kafka sends bytes back to Consumer & creates string from it properties.setProperty(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG,StringDeserializer.class.getName()); properties.setProperty(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG,StringDeserializer.class.getName());
@@ -57,7 +54,7 @@ public class ConsumerThread implements Runnable{
 		
 		public void run() {
 		try {
-			//***Ask/poll for new data***
+			//Ask for new data
 			while(true) {
 				//Earlier Timeout Arg=long(Eg=100), Now KAfka 2.0.0- Arg=Duration.of (Eg-This)
 				ConsumerRecords<String,String> records=consumer.poll(Duration.ofMillis(100)); 
