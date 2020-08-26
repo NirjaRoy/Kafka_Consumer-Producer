@@ -18,10 +18,10 @@ public class ProducerDemo {
 		final org.slf4j.Logger logger = LoggerFactory.getLogger(ProducerDemo.class);
 		// S1 create producer properties
 		Properties properties = new Properties();
-	//from https://kafka.apache.org/documentation/#producerconfigs
-	//BOOTSTRAP_SERVERS_CONFIG : A list of host/port pairs to use for establishing the initial connection to the Kafka cluster.FORMAT -host1:port1,host2:port2
+		//from https://kafka.apache.org/documentation/#producerconfigs
+		//BOOTSTRAP_SERVERS_CONFIG : A list of host/port pairs to use for establishing the initial connection to the Kafka cluster.FORMAT -host1:port1,host2:port2
 		properties.setProperty(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG,val);
-     //key & value serializer : help the producer to know we are sending to kafka and how kafka client will serialize (to bytes(0,1)) whatever we are sending to kafka
+		//key & value serializer : help the producer to know we are sending to kafka and how kafka client will serialize (to bytes(0,1)) whatever we are sending to kafka
 		properties.setProperty(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG,StringSerializer.class.getName()); 
 		properties.setProperty(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG,StringSerializer.class.getName());
 		

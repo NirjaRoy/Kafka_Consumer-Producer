@@ -23,13 +23,11 @@ public class ConsumerDemo {
 		
 	}
 	public void run(){
-		final org.slf4j.Logger logger = LoggerFactory.getLogger(ConsumerDemo.class);
 	String topic = "Topic2";
 	
 	//logger.info("Creating consumer thread");
 	//Runnable myConsumerThread= 
 	Runnable myConsumerThread=	new ConsumerThread (topic);
-
 		};
 	
 public class ConsumerThread implements Runnable{
@@ -58,7 +56,7 @@ public class ConsumerThread implements Runnable{
 		}
 		
 		public void run() {
-			try {
+		try {
 			//***Ask/poll for new data***
 			while(true) {
 				//Earlier Timeout Arg=long(Eg=100), Now KAfka 2.0.0- Arg=Duration.of (Eg-This)
@@ -67,7 +65,7 @@ public class ConsumerThread implements Runnable{
 					logger.info("key:"+record.key()+ "   Value:" + record.value());
 					logger.info("Partition:"+record.partition()+ "   Offset:" + record.offset());
 				}
-			}} catch(WakeupException e) {
+		}} 	catch(WakeupException e) {
 				logger.info("Recieved shutdown signal");
 			}	finally {
 				consumer.close();
